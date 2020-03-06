@@ -1,8 +1,10 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
+    "parameters": {
+    },
+    "variables": {
+    },
     "resources": [
         {
             "name": "WebServerNSG",
@@ -18,10 +20,24 @@
                             "protocol": "Tcp",
                             "sourcePortRange": "*",
                             "destinationPortRange": "*",
-                            "sourceAddressPrefix": "*",
+                            "sourceAddressPrefix": "4.2.2.2/",
                             "destinationAddressPrefix": "*",
                             "access": "Allow",
                             "priority": 100,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Http",
+                        "properties": {
+                            "description": "Allow remote access via RDP from internet",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "4.2.2.2/",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 101,
                             "direction": "Inbound"
                         }
                     }
@@ -29,6 +45,8 @@
             }
         }
     ],
-    "outputs": {},
-    "functions": []
+    "outputs": {
+    },
+    "functions": [
+    ]
 }
